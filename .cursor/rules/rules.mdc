@@ -1,0 +1,44 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+1. Project Setup & Core Technologies
+- Vite for Frontend: We'll use Vite for rapid development and optimized builds of our static frontend.
+- npm for Packages: All project dependencies and scripts will be managed via npm.
+- TypeScript First: All client-side code must be written in TypeScript for type safety, maintainability, and improved developer experience.
+- React Frontend
+- Static Site Approach: The core website will be a client-side rendered static page. Content not requiring user interaction will be pre-bundled. It does not require a backend
+- Only create what's requested: AI should not make it's own assumptions and only create what is expected, based on the prompt and the cursor ruleset
+
+
+2. Frontend Structure & Display
+- All the the frontend files are stored in the folder /web
+- public/ Directory: The index.html file will reside here. This directory is for truly static assets served directly without processing.
+- src/ Directory: All application source code will be located in src/.
+    - src/assets/: Static images and media for the website's design (not user uploads) should be placed here and imported into components.
+    - src/components/: All reusable UI elements (e.g., ImageGallery.ts, LoginForm.ts) will be stored here.
+    - src/pages/: Top-level views or sections of the application (e.g., HomePage.ts, AdminPage.ts).
+    - src/services/: Dedicated modules for API interactions (e.g., AuthService.ts, ImageService.ts).
+    - src/types/: All TypeScript type definitions and interfaces.
+- Image Display: Images shown on the static pages will be handled by Vite's asset bundling or served from public/. Ensure they are responsive via CSS.
+
+3. Image Management (Authorized Users Only)
+- Authentication Flow:
+    - Login: Users will log in in the frontend
+    - Basic authentication: User will need to login using a basic username and a secure password
+- Image Storage: User-uploaded images will be stored on the frontend's server in a folder /uploads
+- Frontend UI for Management:
+    - A Login component for user authentication.
+    - A protected "Admin" section accessible only after successful login.
+    - An UploadForm component to send image files to the server using FormData.
+    - Components to display and manage (e.g., delete) uploaded images, fetching data from the server
+
+4. Security & Best Practices
+- Error Handling: Implement comprehensive error handling for all network requests on the frontend.
+- Loading States: Provide visual feedback (loading indicators) during asynchronous operations like image uploads or data fetching.
+- Linting & Formatting: Use ESLint and Prettier to ensure consistent code style and identify potential issues early in development.
+
+5. Deployment
+
+- Frontend Hosting: The static website will be deployed to a dedicated static site hosting service (e.g., Netlify, Vercel, GitHub Pages).
