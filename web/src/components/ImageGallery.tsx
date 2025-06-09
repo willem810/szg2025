@@ -2,9 +2,10 @@ import React from 'react';
 
 interface ImageGalleryProps {
   year: number;
+  onImageClick: (imageUrl: string) => void;
 }
 
-const ImageGallery: React.FC<ImageGalleryProps> = ({ year }) => {
+const ImageGallery: React.FC<ImageGalleryProps> = ({ year, onImageClick }) => {
   // Import all images from all year folders
   const images = import.meta.glob('../assets/images/*/*.{png,jpg,jpeg,gif}', { eager: true });
   
@@ -16,7 +17,11 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ year }) => {
   return (
     <div className="image-gallery">
       {yearImages.map(([path, module]) => (
-        <div key={path} className="image-container">
+        <div 
+          key={path} 
+          className="image-container"
+          onClick={() => onImageClick((module as { default: string }).default)}
+        >
           <img 
             src={(module as { default: string }).default} 
             alt={`Image from ${year}`}
