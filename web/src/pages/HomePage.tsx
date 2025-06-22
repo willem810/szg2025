@@ -39,7 +39,7 @@ const HomePage: React.FC = () => {
             <li>🔓 Open het ei → mini-badeendje</li>
             <li>🎯 Gooi 't eendje in iemands glas</li>
             <li>🍺 Die moet atten (VIP-regel #1)</li>
-            <li>🔄 Geef het eendje door</li>
+            <li>🔄 Nu is het zijn beurt</li>
             <li>⏰ Herhaal & hydrateer door de tijd</li>
           </ul>
         </div>
