@@ -23,20 +23,20 @@ const Timeline: React.FC = () => {
 
   // Get all images and videos from all years
   const allMedia = useMemo(() => {
-    const images = import.meta.glob('../assets/images/*/*.{png,jpg,jpeg,gif,webp}', { eager: true });
-    const videos = import.meta.glob('../assets/images/*/*.mp4', { eager: true });
+    const images = import.meta.glob('../assets/images/timeline/*/*.{png,jpg,jpeg,gif,webp}', { eager: true });
+    const videos = import.meta.glob('../assets/images/timeline/*/*.mp4', { eager: true });
     
     const imageItems: MediaItem[] = Object.entries(images).map(([path, module]) => ({
       url: (module as { default: string }).default,
       path,
-      year: parseInt(path.match(/\/images\/(\d+)\//)?.[1] || '0'),
+      year: parseInt(path.match(/\/images\/timeline\/(\d+)\//)?.[1] || '0'),
       type: 'image' as const
     }));
     
     const videoItems: MediaItem[] = Object.entries(videos).map(([path, module]) => ({
       url: (module as { default: string }).default,
       path,
-      year: parseInt(path.match(/\/images\/(\d+)\//)?.[1] || '0'),
+      year: parseInt(path.match(/\/images\/timeline\/(\d+)\//)?.[1] || '0'),
       type: 'video' as const
     }));
     

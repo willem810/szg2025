@@ -8,17 +8,17 @@ interface ImageGalleryProps {
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({ year, onImageClick, onVideoClick }) => {
   // Import all images and videos from all year folders
-  const images = import.meta.glob('../assets/images/*/*.{png,jpg,jpeg,gif,webp}', { eager: true });
-  const videos = import.meta.glob('../assets/images/*/*.mp4', { eager: true });
+  const images = import.meta.glob('../assets/images/timeline/*/*.{png,jpg,jpeg,gif,webp}', { eager: true });
+  const videos = import.meta.glob('../assets/images/timeline/*/*.mp4', { eager: true });
   
   // Filter images for the specific year
   const yearImages = Object.entries(images).filter(([path]) => 
-    path.includes(`/images/${year}/`)
+    path.includes(`/images/timeline/${year}/`)
   );
 
   // Filter videos for the specific year
   const yearVideos = Object.entries(videos).filter(([path]) => 
-    path.includes(`/images/${year}/`)
+    path.includes(`/images/timeline/${year}/`)
   );
 
   return (
