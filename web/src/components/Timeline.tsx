@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ImageGallery from './ImageGallery';
 import ImageModal from './ImageModal';
-import timeMachineImage from '../assets/images/timemachine.jpg';
 
 interface TimelineItem {
   year: number;
@@ -10,14 +9,6 @@ interface TimelineItem {
   isTimeTravel?: boolean;
   position: 'left' | 'right';
 }
-
-const TimeTravelEffect: React.FC = () => (
-  <div className="time-travel-container">
-    <div className="time-machine">
-      <img src={timeMachineImage} alt="Time Machine" className="time-travel-image" />
-    </div>
-  </div>
-);
 
 const Timeline: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -41,15 +32,12 @@ const Timeline: React.FC = () => {
   return (
     <div className="timeline">
       {timelineItems.map((item) => (
-        <React.Fragment key={item.year}>
-          <div className={`timeline-item ${item.position}`}>
-            <div className="timeline-year-dot">{item.year}</div>
-            <div className="timeline-content">
-              <ImageGallery year={item.year} onImageClick={handleImageClick} />
-            </div>
+        <div key={item.year} className={`timeline-item ${item.position}`}>
+          <div className="timeline-year-dot">{item.year}</div>
+          <div className="timeline-content">
+            <ImageGallery year={item.year} onImageClick={handleImageClick} />
           </div>
-          {item.year === 2025 && <TimeTravelEffect />}
-        </React.Fragment>
+        </div>
       ))}
       {selectedImage && (
         <ImageModal imageUrl={selectedImage} onClose={handleCloseModal} />
