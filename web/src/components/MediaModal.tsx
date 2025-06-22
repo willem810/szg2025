@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-interface ImageModalProps {
+interface MediaModalProps {
   mediaUrl: string;
   mediaType: 'image' | 'video';
   onClose: () => void;
@@ -10,7 +10,7 @@ interface ImageModalProps {
   currentYear: number;
 }
 
-const ImageModal: React.FC<ImageModalProps> = ({ 
+const MediaModal: React.FC<MediaModalProps> = ({ 
   mediaUrl, 
   mediaType,
   onClose, 
@@ -21,7 +21,6 @@ const ImageModal: React.FC<ImageModalProps> = ({
 }) => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -50,14 +49,12 @@ const ImageModal: React.FC<ImageModalProps> = ({
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [onNavigate, onClose]);
 
-  // Reset video state when media changes
+  // Pause video when navigating away
   useEffect(() => {
-    setIsVideoPlaying(false);
-    if (videoRef.current) {
+    if (videoRef.current && mediaType === 'video') {
       videoRef.current.pause();
-      videoRef.current.currentTime = 0;
     }
-  }, [mediaUrl]);
+  }, [mediaUrl, mediaType]);
 
   const onTouchStart = (e: React.TouchEvent) => {
     setTouchEnd(null);
@@ -81,22 +78,6 @@ const ImageModal: React.FC<ImageModalProps> = ({
     if (isRightSwipe) {
       onNavigate('prev');
     }
-  };
-
-  const handleVideoClick = () => {
-    if (videoRef.current) {
-      if (isVideoPlaying) {
-        videoRef.current.pause();
-        setIsVideoPlaying(false);
-      } else {
-        videoRef.current.play();
-        setIsVideoPlaying(true);
-      }
-    }
-  };
-
-  const handleVideoEnded = () => {
-    setIsVideoPlaying(false);
   };
 
   return (
@@ -130,25 +111,23 @@ const ImageModal: React.FC<ImageModalProps> = ({
           ›
         </button>
 
-        {/* Render image or video */}
-        {mediaType === 'image' ? (
-          <img src={mediaUrl} alt="Enlarged view" className="modal-image" />
-        ) : (
-          <div className="modal-video-container" onClick={handleVideoClick}>
+        {/* Media content */}
+        <div className="modal-media">
+          {mediaType === 'image' ? (
+            <img src={mediaUrl} alt="Enlarged view" className="modal-image" />
+          ) : (
             <video 
               ref={videoRef}
-              src={mediaUrl} 
+              src={mediaUrl}
+              controls
+              autoPlay
               className="modal-video"
-              onEnded={handleVideoEnded}
-              controls={false}
-            />
-            {!isVideoPlaying && (
-              <div className="video-play-overlay">
-                <div className="play-button">▶</div>
-              </div>
-            )}
-          </div>
-        )}
+            >
+              <source src={mediaUrl} type={`video/${mediaUrl.split('.').pop()}`} />
+              Your browser does not support the video tag.
+            </video>
+          )}
+        </div>
         
         {/* Media counter with year */}
         <div className="modal-counter">
@@ -159,4 +138,4 @@ const ImageModal: React.FC<ImageModalProps> = ({
   );
 };
 
-export default ImageModal; 
+export default MediaModal; 

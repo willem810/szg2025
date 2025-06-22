@@ -10,6 +10,7 @@ alwaysApply: true
 - React Frontend
 - Static Site Approach: The core website will be a client-side rendered static page. Content not requiring user interaction will be pre-bundled. It does not require a backend
 - Only create what's requested: AI should not make it's own assumptions and only create what is expected, based on the prompt and the cursor ruleset
+- Requires support for both desktop and mobile
 
 
 2. Frontend Structure & Display

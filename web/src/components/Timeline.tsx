@@ -10,50 +10,79 @@ interface TimelineItem {
   position: 'left' | 'right';
 }
 
+interface MediaItem {
+  url: string;
+  path: string;
+  year: number;
+  type: 'image' | 'video';
+}
+
 const Timeline: React.FC = () => {
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [selectedMediaIndex, setSelectedMediaIndex] = useState<number | null>(null);
   const [currentYear, setCurrentYear] = useState<number | null>(null);
 
-  // Get all images from all years
-  const allImages = useMemo(() => {
+  // Get all images and videos from all years
+  const allMedia = useMemo(() => {
     const images = import.meta.glob('../assets/images/*/*.{png,jpg,jpeg,gif,webp}', { eager: true });
-    return Object.entries(images).map(([path, module]) => ({
+    const videos = import.meta.glob('../assets/images/*/*.mp4', { eager: true });
+    
+    const imageItems: MediaItem[] = Object.entries(images).map(([path, module]) => ({
       url: (module as { default: string }).default,
       path,
-      year: parseInt(path.match(/\/images\/(\d+)\//)?.[1] || '0')
+      year: parseInt(path.match(/\/images\/(\d+)\//)?.[1] || '0'),
+      type: 'image' as const
     }));
+    
+    const videoItems: MediaItem[] = Object.entries(videos).map(([path, module]) => ({
+      url: (module as { default: string }).default,
+      path,
+      year: parseInt(path.match(/\/images\/(\d+)\//)?.[1] || '0'),
+      type: 'video' as const
+    }));
+    
+    return [...imageItems, ...videoItems];
   }, []);
 
-  // Get images for the current year
-  const currentYearImages = useMemo(() => {
+  // Get media for the current year
+  const currentYearMedia = useMemo(() => {
     if (currentYear === null) return [];
-    return allImages.filter(img => img.year === currentYear);
-  }, [allImages, currentYear]);
+    return allMedia.filter(media => media.year === currentYear);
+  }, [allMedia, currentYear]);
 
   const handleImageClick = (imageUrl: string) => {
-    const image = allImages.find(img => img.url === imageUrl);
-    if (image) {
-      setCurrentYear(image.year);
-      const yearImages = allImages.filter(img => img.year === image.year);
-      const indexInYear = yearImages.findIndex(img => img.url === imageUrl);
-      setSelectedImageIndex(indexInYear >= 0 ? indexInYear : null);
+    const media = allMedia.find(m => m.url === imageUrl);
+    if (media) {
+      setCurrentYear(media.year);
+      const yearMedia = allMedia.filter(m => m.year === media.year);
+      const indexInYear = yearMedia.findIndex(m => m.url === imageUrl);
+      setSelectedMediaIndex(indexInYear >= 0 ? indexInYear : null);
+    }
+  };
+
+  const handleVideoClick = (videoUrl: string) => {
+    const media = allMedia.find(m => m.url === videoUrl);
+    if (media) {
+      setCurrentYear(media.year);
+      const yearMedia = allMedia.filter(m => m.year === media.year);
+      const indexInYear = yearMedia.findIndex(m => m.url === videoUrl);
+      setSelectedMediaIndex(indexInYear >= 0 ? indexInYear : null);
     }
   };
 
   const handleCloseModal = () => {
-    setSelectedImageIndex(null);
+    setSelectedMediaIndex(null);
     setCurrentYear(null);
   };
 
   const handleNavigate = (direction: 'next' | 'prev') => {
-    if (selectedImageIndex === null || currentYear === null) return;
+    if (selectedMediaIndex === null || currentYear === null) return;
     
-    const yearImages = allImages.filter(img => img.year === currentYear);
+    const yearMedia = allMedia.filter(media => media.year === currentYear);
     
     if (direction === 'next') {
-      setSelectedImageIndex((selectedImageIndex + 1) % yearImages.length);
+      setSelectedMediaIndex((selectedMediaIndex + 1) % yearMedia.length);
     } else {
-      setSelectedImageIndex(selectedImageIndex === 0 ? yearImages.length - 1 : selectedImageIndex - 1);
+      setSelectedMediaIndex(selectedMediaIndex === 0 ? yearMedia.length - 1 : selectedMediaIndex - 1);
     }
   };
 
@@ -65,9 +94,9 @@ const Timeline: React.FC = () => {
     { year: 2021, title: 'Year 2021', description: 'Events and milestones from 2021', position: 'left' },
   ];
 
-  // Get the current image URL for the modal
-  const currentImageUrl = selectedImageIndex !== null && currentYear !== null 
-    ? currentYearImages[selectedImageIndex]?.url 
+  // Get the current media for the modal
+  const currentMedia = selectedMediaIndex !== null && currentYear !== null 
+    ? currentYearMedia[selectedMediaIndex] 
     : null;
 
   return (
@@ -76,17 +105,22 @@ const Timeline: React.FC = () => {
         <div key={item.year} className={`timeline-item ${item.position}`}>
           <div className="timeline-year-dot">{item.year}</div>
           <div className="timeline-content">
-            <ImageGallery year={item.year} onImageClick={handleImageClick} />
+            <ImageGallery 
+              year={item.year} 
+              onImageClick={handleImageClick}
+              onVideoClick={handleVideoClick}
+            />
           </div>
         </div>
       ))}
-      {selectedImageIndex !== null && currentImageUrl && (
+      {selectedMediaIndex !== null && currentMedia && (
         <ImageModal 
-          imageUrl={currentImageUrl}
+          mediaUrl={currentMedia.url}
+          mediaType={currentMedia.type}
           onClose={handleCloseModal}
           onNavigate={handleNavigate}
-          currentIndex={selectedImageIndex}
-          totalImages={currentYearImages.length}
+          currentIndex={selectedMediaIndex}
+          totalMedia={currentYearMedia.length}
           currentYear={currentYear!}
         />
       )}
