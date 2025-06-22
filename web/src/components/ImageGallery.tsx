@@ -7,7 +7,7 @@ interface ImageGalleryProps {
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({ year, onImageClick }) => {
   // Import all images from all year folders
-  const images = import.meta.glob('../assets/images/*/*.{png,jpg,jpeg,gif}', { eager: true });
+  const images = import.meta.glob('../assets/images/*/*.{png,jpg,jpeg,gif,webp}', { eager: true });
   
   // Filter images for the specific year
   const yearImages = Object.entries(images).filter(([path]) => 
