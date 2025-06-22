@@ -87,7 +87,6 @@ const Timeline: React.FC = () => {
   };
 
   const timelineItems: TimelineItem[] = [
-    { year: 2025, title: 'Year 2025', description: 'Events and milestones from 2025', position: 'left' },
     { year: 2024, title: 'Year 2024', description: 'Events and milestones from 2024', position: 'right' },
     { year: 2023, title: 'Year 2023', description: 'Events and milestones from 2023', position: 'left' },
     { year: 2022, title: 'Year 2022', description: 'Events and milestones from 2022', position: 'right' },
