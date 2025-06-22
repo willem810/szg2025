@@ -350,7 +350,7 @@ body {
 .modal-video-container {
   position: relative;
   max-width: 100%;
-  max-height: 85vh;
+  max-height: 95vh;
   border-radius: 8px;
   overflow: hidden;
   background: #000;
@@ -359,7 +359,7 @@ body {
 
 .modal-video {
   max-width: 100%;
-  max-height: 85vh;
+  max-height: 95vh;
   object-fit: contain;
   border-radius: 8px;
   display: block;
@@ -509,7 +509,7 @@ body {
 
   /* Mobile modal navigation adjustments */
   .modal-nav {
-    display: none;
+    display: none !important;
   }
 
   .modal-counter {
@@ -520,10 +520,10 @@ body {
 
   /* Adjust modal overlay padding for mobile */
   .modal-overlay {
-    padding: 1.5rem;
-    padding-left: 3.5rem;
-    padding-right: 3.5rem;
-    padding-bottom: 3.5rem;
+    padding: 0.1rem !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    padding-bottom: 0.1rem !important;
   }
 
   /* Video container mobile adjustments */
@@ -537,6 +537,19 @@ body {
     width: 60px;
     height: 60px;
     font-size: 24px;
+  }
+
+  /* Mobile modal content adjustments */
+  .modal-content {
+    padding: 0.05rem !important;
+    max-width: 99.5vw !important;
+  }
+
+  /* Mobile modal image adjustments */
+  .modal-image {
+    max-height: 95vh !important;
+    max-width: 100% !important;
+    width: 100% !important;
   }
 }
 
@@ -591,7 +604,7 @@ body {
 
   /* Small mobile modal navigation adjustments */
   .modal-nav {
-    display: none;
+    display: none !important;
   }
 
   .modal-nav-prev {
@@ -610,10 +623,10 @@ body {
 
   /* Adjust modal overlay padding for small mobile */
   .modal-overlay {
-    padding: 1rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    padding-bottom: 3rem;
+    padding: 0.05rem !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    padding-bottom: 0.05rem !important;
   }
 
   /* Small mobile video adjustments */
@@ -627,6 +640,19 @@ body {
     width: 50px;
     height: 50px;
     font-size: 20px;
+  }
+
+  /* Mobile modal content adjustments */
+  .modal-content {
+    padding: 0.05rem !important;
+    max-width: 99.5vw !important;
+  }
+
+  /* Mobile modal image adjustments */
+  .modal-image {
+    max-height: 95vh !important;
+    max-width: 100% !important;
+    width: 100% !important;
   }
 }
 
