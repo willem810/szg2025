@@ -1,3 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #FFF7CC;
+}
+
 .app {
   max-width: 1200px;
   margin: 0 auto;
@@ -7,6 +14,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #111;
 }
 
 .home-page {
@@ -14,7 +22,7 @@
   margin: 0 auto;
   max-width: 800px;
   width: 100%;
-  color: yellow;
+  color: #111;
 }
 
 .home-page h1 {
@@ -79,10 +87,10 @@
   width: 4px;
   background: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.8) 20%,
-    rgba(255, 255, 255, 0.8) 80%,
-    rgba(255, 255, 255, 0.1)
+    rgba(17, 17, 17, 0.1),
+    rgba(17, 17, 17, 0.8) 20%,
+    rgba(17, 17, 17, 0.8) 80%,
+    rgba(17, 17, 17, 0.1)
   );
   top: 0;
   bottom: 0;
@@ -90,30 +98,30 @@
   margin-left: 0;
   border-radius: 2px;
   box-shadow: 
-    0 0 10px rgba(255, 255, 255, 0.3),
-    0 0 20px rgba(255, 255, 255, 0.2),
-    0 0 30px rgba(255, 255, 255, 0.1);
+    0 0 10px rgba(17, 17, 17, 0.1),
+    0 0 20px rgba(17, 17, 17, 0.08),
+    0 0 30px rgba(17, 17, 17, 0.05);
   animation: timelineGlow 3s ease-in-out infinite;
 }
 
 @keyframes timelineGlow {
   0% {
     box-shadow: 
-      0 0 10px rgba(255, 255, 255, 0.3),
-      0 0 20px rgba(255, 255, 255, 0.2),
-      0 0 30px rgba(255, 255, 255, 0.1);
+      0 0 10px rgba(17, 17, 17, 0.1),
+      0 0 20px rgba(17, 17, 17, 0.08),
+      0 0 30px rgba(17, 17, 17, 0.05);
   }
   50% {
     box-shadow: 
-      0 0 15px rgba(255, 255, 255, 0.4),
-      0 0 25px rgba(255, 255, 255, 0.3),
-      0 0 35px rgba(255, 255, 255, 0.2);
+      0 0 15px rgba(17, 17, 17, 0.1),
+      0 0 25px rgba(17, 17, 17, 0.08),
+      0 0 35px rgba(17, 17, 17, 0.05);
   }
   100% {
     box-shadow: 
-      0 0 10px rgba(255, 255, 255, 0.3),
-      0 0 20px rgba(255, 255, 255, 0.2),
-      0 0 30px rgba(255, 255, 255, 0.1);
+      0 0 10px rgba(17, 17, 17, 0.1),
+      0 0 20px rgba(17, 17, 17, 0.08),
+      0 0 30px rgba(17, 17, 17, 0.05);
   }
 }
 
@@ -130,17 +138,17 @@
   transform: translate(-50%, -50%);
   width: 60px;
   height: 60px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  background: rgba(17, 17, 17, 0.08);
+  border: 2px solid #111;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
   font-weight: bold;
-  color: rgba(255, 255, 255, 0.9);
+  color: #111;
   backdrop-filter: blur(5px);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(17, 17, 17, 0.08);
   z-index: 2;
 }
 
@@ -192,19 +200,19 @@
 }
 
 .timeline-content h3 {
-  color: white;
+  color: #111 !important;
   margin: 0 0 1.5rem 0;
   font-size: 2.5rem;
 }
 
 .timeline-content h4 {
-  color: rgba(255, 255, 255, 0.9);
+  color: #111 !important;
   margin: 0 0 0.5rem 0;
   font-size: 1.6rem;
 }
 
 .timeline-content p {
-  color: rgba(255, 255, 255, 0.8);
+  color: #111 !important;
   margin: 0;
   font-size: 1.4rem;
 }
@@ -356,14 +364,17 @@
 
   .timeline-content h3 {
     font-size: 2rem;
+    color: #111 !important;
   }
 
   .timeline-content h4 {
     font-size: 1.4rem;
+    color: #111 !important;
   }
 
   .timeline-content p {
     font-size: 1.2rem;
+    color: #111 !important;
   }
 
   .image-gallery {
@@ -418,14 +429,17 @@
 
   .timeline-content h3 {
     font-size: 1.8rem;
+    color: #111 !important;
   }
 
   .timeline-content h4 {
     font-size: 1.2rem;
+    color: #111 !important;
   }
 
   .timeline-content p {
     font-size: 1rem;
+    color: #111 !important;
   }
 
   .time-travel-image {
@@ -516,4 +530,19 @@
     opacity: 1;
     transform: scale(1);
   }
+}
+
+.homepage-description {
+  color: #111;
+  text-shadow: none;
+}
+
+.homepage-description h1 {
+  color: #111;
+  text-shadow: none;
+}
+
+.homepage-description p {
+  color: #111;
+  text-shadow: none;
 }
