@@ -2,6 +2,7 @@ import React from 'react';
 import Timeline from '../components/Timeline';
 import InstagramIcon from '../assets/images/Instagram_icon.png.webp';
 import PlayfulStack from '../components/PlayfulStack';
+import TimeMachineEasterEgg from '../components/TimeMachineEasterEgg';
 
 const HomePage: React.FC = () => {
   return (
@@ -49,6 +50,7 @@ const HomePage: React.FC = () => {
       <PlayfulStack />
 
       <Timeline />
+      <TimeMachineEasterEgg />
     </div>
   );
 };
