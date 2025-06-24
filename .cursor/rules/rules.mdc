@@ -13,6 +13,7 @@ alwaysApply: true
 - Requires support for both desktop and mobile
 
 
+
 2. Frontend Structure & Display
 - All the the frontend files are stored in the folder /web
 - public/ Directory: The index.html file will reside here. This directory is for truly static assets served directly without processing.
@@ -41,5 +42,4 @@ alwaysApply: true
 - Linting & Formatting: Use ESLint and Prettier to ensure consistent code style and identify potential issues early in development.
 
 5. Deployment
-
-- Frontend Hosting: The static website will be deployed to a dedicated static site hosting service (e.g., Netlify, Vercel, GitHub Pages).
+- Frontend Hosting: The static website will be deployed to GitHub Pages
