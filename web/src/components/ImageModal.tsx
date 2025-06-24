@@ -7,7 +7,7 @@ interface ImageModalProps {
   onNavigate: (direction: 'next' | 'prev') => void;
   currentIndex: number;
   totalMedia: number;
-  currentYear: number;
+  currentYear?: number;
 }
 
 const ImageModal: React.FC<ImageModalProps> = ({ 
@@ -152,7 +152,9 @@ const ImageModal: React.FC<ImageModalProps> = ({
         
         {/* Media counter with year */}
         <div className="modal-counter">
-          {currentYear} - {currentIndex + 1} / {totalMedia}
+          {typeof currentYear === 'number'
+            ? `${currentYear} - ${currentIndex + 1} / ${totalMedia}`
+            : `${currentIndex + 1} / ${totalMedia}`}
         </div>
       </div>
     </div>
