@@ -13,7 +13,7 @@ const HomePage: React.FC = () => {
         <p>Via een ei en QR-code beland in dit avontuur? Welkom, eendenzoeker! 🥚🦆</p>
         <p>
           <a 
-            href="https://www.instagram.com/eendjesnaarzonzeeszg/" 
+            href="https://www.instagram.com/eendjesoptijdreis/" 
             target="_blank" 
             rel="noopener noreferrer"
             style={{ color: '#E4405F', textDecoration: 'none', fontWeight: 'bold' }}

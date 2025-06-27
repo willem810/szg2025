@@ -1,21 +1,39 @@
 import React, { useState } from 'react';
 import duckImg from '../assets/images/duck_background.png';
 import eggImg from '../assets/images/egg.png';
+import { useStyle } from '../contexts/StyleContext';
 
 const TimeMachineEasterEgg: React.FC = () => {
   const [active, setActive] = useState(false);
   const [showEgg, setShowEgg] = useState(false);
   const [showFlash, setShowFlash] = useState(false);
+  const [isReverseAnimation, setIsReverseAnimation] = useState(false);
+  const { isVintageStyle, setVintageStyle } = useStyle();
 
   const handleClick = () => {
     setActive(true);
     setShowEgg(false);
     setShowFlash(false);
-    setTimeout(() => setShowFlash(true), 1100); // Flash just before egg appears
+    
+    // Determine if we're going to vintage (true) or back to normal (false)
+    const goingToVintage = !isVintageStyle;
+    
+    // Set reverse animation if going back to normal
+    setIsReverseAnimation(!goingToVintage);
+    
+    // Start with duck if going to vintage, egg if going to normal
+    setShowEgg(!goingToVintage);
+    
+    // Toggle vintage style when animation begins
+    setTimeout(() => setVintageStyle(goingToVintage), 500);
+    
+    setTimeout(() => setShowFlash(true), 1100); // Flash just before transformation
     setTimeout(() => {
-      setShowEgg(true);
+      // Show egg when going to vintage, duck when going to normal
+      setShowEgg(goingToVintage);
       setShowFlash(false);
-    }, 1800); // Duck animates for 1.8s, then egg appears
+    }, 1800); // Animation plays for 1.8s, then transformation appears
+    
     setTimeout(() => setActive(false), 3000); // End animation after 3s
   };
 
@@ -38,7 +56,7 @@ const TimeMachineEasterEgg: React.FC = () => {
             <img
               src={showEgg ? eggImg : duckImg}
               alt={showEgg ? 'Egg' : 'Duck'}
-              className={`easter-egg-img${showEgg ? ' egg' : ' duck'}`}
+              className={`easter-egg-img${showEgg ? ' egg' : ' duck'}${isReverseAnimation ? ' reverse' : ''}`}
             />
             {showFlash && (
               <div className="easter-egg-flash" />
@@ -177,9 +195,15 @@ const TimeMachineEasterEgg: React.FC = () => {
           z-index: 2;
           animation: duck-to-egg 1.8s forwards;
         }
+        .easter-egg-img.duck.reverse {
+          animation: egg-to-duck 1.8s forwards;
+        }
         .easter-egg-img.egg {
           z-index: 3;
           animation: egg-appear 1s;
+        }
+        .easter-egg-img.egg.reverse {
+          animation: duck-appear 1s;
         }
         @keyframes duck-to-egg {
           0% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
@@ -188,9 +212,21 @@ const TimeMachineEasterEgg: React.FC = () => {
           90% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.6) rotate(-20deg); }
           100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5) rotate(-30deg); }
         }
+        @keyframes egg-to-duck {
+          0% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+          60% { opacity: 1; transform: translate(-50%, -50%) scale(1.2) rotate(-20deg); }
+          80% { opacity: 0.7; transform: translate(-50%, -50%) scale(0.7) rotate(10deg); }
+          90% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.6) rotate(20deg); }
+          100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5) rotate(30deg); }
+        }
         @keyframes egg-appear {
           0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5) rotate(-30deg); }
           60% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1) rotate(10deg); }
+          100% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+        }
+        @keyframes duck-appear {
+          0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5) rotate(30deg); }
+          60% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1) rotate(-10deg); }
           100% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
         }
         .easter-egg-flash {

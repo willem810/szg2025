@@ -8,3 +8,5 @@ The project uses the following techstack:
 - Vite v6.3.5
 - React 19.1
 
+Code is developed on windows machine
+Using a powershell CLI to run commands

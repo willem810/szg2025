@@ -1,8 +1,16 @@
+@font-face {
+  font-family: 'Sancreek';
+  src: url('./assets/fonts/Sancreek-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
   background-color: #FFF7CC;
+  transition: all 0.8s ease-in-out;
 }
 
 .app {
@@ -933,4 +941,313 @@ body {
   pointer-events: none;
   text-align: center;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Vintage/Wanted Poster Style */
+.vintage-style {
+  transition: all 0.8s ease-in-out;
+}
+
+/* Force background color change */
+body.vintage-style {
+  background: linear-gradient(135deg, #2c1810 0%, #4a2c1a 25%, #8b4513 50%, #a0522d 75%, #cd853f 100%) !important;
+  color: #f4e4bc !important;
+  min-height: 100vh !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+}
+
+/* Also apply to html element for better coverage */
+html.vintage-style {
+  background: linear-gradient(135deg, #2c1810 0%, #4a2c1a 25%, #8b4513 50%, #a0522d 75%, #cd853f 100%) !important;
+  min-height: 100vh !important;
+}
+
+/* Remove all container styling and just change fonts and colors */
+.vintage-style .home-page h1 {
+  color: #d2691e;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  font-family: 'Sancreek', 'Times New Roman', serif;
+  font-weight: normal;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 2.8rem;
+  line-height: 1.2;
+}
+
+.vintage-style .home-page h2 {
+  color: #cd853f;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  font-family: 'Sancreek', 'Times New Roman', serif;
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: 1px;
+  font-size: 1.8rem;
+  line-height: 1.3;
+}
+
+.vintage-style .home-page h3 {
+  color: #daa520;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  font-family: 'Sancreek', 'Times New Roman', serif;
+  font-weight: normal;
+  letter-spacing: 1px;
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+.vintage-style .home-page p {
+  color: #f4e4bc;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+  font-family: 'Sancreek', 'Georgia', serif;
+}
+
+.vintage-style .home-page a {
+  color: #ffd700;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  font-weight: bold;
+  font-family: 'Sancreek', 'Georgia', serif;
+}
+
+.vintage-style .home-page a:hover {
+  color: #ffed4e;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.vintage-style .home-page ul {
+  color: #f4e4bc;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.vintage-style .home-page li {
+  color: #f4e4bc;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+  font-family: 'Sancreek', 'Georgia', serif;
+}
+
+/* Timeline styles - just colors and fonts */
+.vintage-style .timeline::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(210, 105, 30, 0.3),
+    rgba(210, 105, 30, 0.8) 20%,
+    rgba(210, 105, 30, 0.8) 80%,
+    rgba(210, 105, 30, 0.3)
+  );
+  box-shadow: 
+    0 0 10px rgba(210, 105, 30, 0.3),
+    0 0 20px rgba(210, 105, 30, 0.2),
+    0 0 30px rgba(210, 105, 30, 0.1);
+}
+
+.vintage-style .timeline-year-dot {
+  background: rgba(139, 69, 19, 0.9);
+  border: 3px solid #d2691e;
+  color: #f4e4bc;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  box-shadow: 
+    0 0 15px rgba(210, 105, 30, 0.4),
+    inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.vintage-style .timeline-content h3 {
+  color: #d2691e;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  font-family: 'Sancreek', 'Times New Roman', serif;
+  font-weight: normal;
+  letter-spacing: 1px;
+  font-size: 1.4rem;
+  line-height: 1.3;
+}
+
+.vintage-style .timeline-content h4 {
+  color: #cd853f;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  font-family: 'Sancreek', 'Times New Roman', serif;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+.vintage-style .timeline-content p {
+  color: #f4e4bc;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+  font-family: 'Sancreek', 'Georgia', serif;
+}
+
+/* Image and video filters only */
+.vintage-style .image-container img {
+  filter: sepia(0.3) contrast(1.1) brightness(0.9);
+}
+
+.vintage-style .image-container:hover img {
+  filter: sepia(0.2) contrast(1.2) brightness(1.0);
+}
+
+.vintage-style .video-container video {
+  filter: sepia(0.3) contrast(1.1) brightness(0.9);
+}
+
+.vintage-style .video-container:hover video {
+  filter: sepia(0.2) contrast(1.2) brightness(1.0);
+}
+
+/* Modal styles - just colors and fonts */
+.vintage-style .modal-overlay {
+  background: rgba(44, 24, 16, 0.95);
+  backdrop-filter: sepia(0.3) contrast(1.2);
+}
+
+.vintage-style .modal-content {
+  background: rgba(44, 24, 16, 0.95);
+  border: 3px solid #8b4513;
+  box-shadow: 
+    0 0 30px rgba(139, 69, 19, 0.6),
+    inset 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.vintage-style .modal-close {
+  background: rgba(139, 69, 19, 0.9);
+  border: 2px solid #d2691e;
+  color: #f4e4bc;
+  font-family: 'Sancreek', 'Georgia', serif;
+}
+
+.vintage-style .modal-close:hover {
+  background: rgba(210, 105, 30, 0.9);
+  border-color: #ffd700;
+  color: #ffed4e;
+}
+
+.vintage-style .modal-nav {
+  background: rgba(139, 69, 19, 0.9);
+  border: 2px solid #d2691e;
+  color: #f4e4bc;
+  font-family: 'Sancreek', 'Georgia', serif;
+}
+
+.vintage-style .modal-nav:hover {
+  background: rgba(210, 105, 30, 0.9);
+  border-color: #ffd700;
+  color: #ffed4e;
+}
+
+.vintage-style .modal-counter {
+  color: #f4e4bc;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  font-family: 'Sancreek', 'Georgia', serif;
+}
+
+/* Ensure time machine button stays fixed and on top */
+.vintage-style .time-machine-easter-egg-btn {
+  position: fixed !important;
+  bottom: 32px !important;
+  right: 32px !important;
+  z-index: 1002 !important;
+  background: linear-gradient(135deg, #d2691e 60%, #cd853f 100%) !important;
+  border: 2px solid #8b4513 !important;
+  box-shadow: 0 4px 16px rgba(139, 69, 19, 0.4) !important;
+}
+
+.vintage-style .time-machine-easter-egg-btn:hover {
+  background: linear-gradient(135deg, #cd853f 60%, #daa520 100%) !important;
+  border-color: #d2691e !important;
+}
+
+.vintage-style .time-machine-easter-egg-btn .gear {
+  border-color: #8b4513 !important;
+}
+
+.vintage-style .time-machine-easter-egg-btn .clock-face {
+  border-color: #8b4513 !important;
+}
+
+.vintage-style .time-machine-easter-egg-btn .clock-hand {
+  background: #8b4513 !important;
+}
+
+.vintage-style .time-machine-easter-egg-btn .portal {
+  border-color: #cd853f !important;
+  box-shadow: 0 0 16px #d2691e !important;
+}
+
+/* Vintage style transition animations */
+.vintage-transition {
+  animation: vintageTransition 0.8s ease-in-out;
+}
+
+@keyframes vintageTransition {
+  0% {
+    filter: sepia(0) contrast(1) brightness(1);
+  }
+  50% {
+    filter: sepia(0.5) contrast(1.3) brightness(0.8);
+  }
+  100% {
+    filter: sepia(0.3) contrast(1.2) brightness(0.9);
+  }
+}
+
+/* Responsive vintage styles */
+@media screen and (max-width: 768px) {
+  .vintage-style .home-page h1 {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+  }
+  
+  .vintage-style .home-page h2 {
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .vintage-style .home-page h3 {
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .vintage-style .home-page p {
+    font-size: 1rem;
+  }
+  
+  .vintage-style .timeline-content h3 {
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .vintage-style .timeline-content h4 {
+    font-size: 1.1rem;
+    letter-spacing: 0.3px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .vintage-style .home-page h1 {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+  
+  .vintage-style .home-page h2 {
+    font-size: 1.3rem;
+    letter-spacing: 0.3px;
+  }
+  
+  .vintage-style .home-page h3 {
+    font-size: 1.1rem;
+    letter-spacing: 0.3px;
+  }
+  
+  .vintage-style .home-page p {
+    font-size: 0.9rem;
+  }
+  
+  .vintage-style .timeline-content h3 {
+    font-size: 1.1rem;
+    letter-spacing: 0.3px;
+  }
+  
+  .vintage-style .timeline-content h4 {
+    font-size: 1rem;
+    letter-spacing: 0.2px;
+  }
 }
