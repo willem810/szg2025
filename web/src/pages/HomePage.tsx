@@ -9,7 +9,7 @@ const HomePage: React.FC = () => {
     <div className="home-page">
       <div className="homepage-description" style={{ marginBottom: '2rem', textAlign: 'center' }}>
         <h1>🕰️ De Tijdreis van het Eendje  </h1>
-        <h2> Door Team 29 – De Betrouwbare VIPs</h2>
+        <h2> Team 29 – De Betrouwbare VIPs</h2>
         <p>Via een ei en QR-code beland in dit avontuur? Welkom, eendenzoeker! 🥚🦆</p>
         <p>
           <a 

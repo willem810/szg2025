@@ -8,6 +8,7 @@ interface TimelineItem {
   description: string;
   isTimeTravel?: boolean;
   position: 'left' | 'right';
+  markerShape?: 'circle' | 'star';
 }
 
 interface MediaItem {
@@ -87,6 +88,7 @@ const Timeline: React.FC = () => {
   };
 
   const timelineItems: TimelineItem[] = [
+    { year: 2025, title: 'Year 2025', description: 'Events and milestones from 2025', position: 'left', markerShape: 'star' },
     { year: 2024, title: 'Year 2024', description: 'Events and milestones from 2024', position: 'right' },
     { year: 2023, title: 'Year 2023', description: 'Events and milestones from 2023', position: 'left' },
     { year: 2022, title: 'Year 2022', description: 'Events and milestones from 2022', position: 'right' },
@@ -101,7 +103,9 @@ const Timeline: React.FC = () => {
     <div className="timeline">
       {timelineItems.map((item) => (
         <div key={item.year} className={`timeline-item ${item.position}`}>
-          <div className="timeline-year-dot">{item.year}</div>
+          <div className={`timeline-year-dot ${item.markerShape === 'star' ? 'timeline-year-star' : ''}`}>
+            {item.year}
+          </div>
           <div className="timeline-content">
             <ImageGallery 
               year={item.year} 
