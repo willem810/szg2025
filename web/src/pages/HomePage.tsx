@@ -35,7 +35,11 @@ const HomePage: React.FC = () => {
 
         <div className="additional-list" style={{ marginBottom: '2rem', textAlign: 'center' }}>
           <h3>Hoe werkt het?</h3>
-          <p>Onze klassieke badeend-drinkactie krijgt een oertijd-upgrade</p>
+          <p>
+            Onze legendarische badeend-drinkactie krijgt dit jaar een prehistorische upgrade. <br/>
+            Want voordat er een eend🦆 was, was er een... ei 🥚! <br/>
+            <u>En die hebben we overal verstopt!</u>
+          </p>
           <ul style={{ listStyle: 'none', padding: 0 }}>
             <li>🥚 Vind een ei</li>
             <li>🔓 Open het ei → mini-badeendje</li>
@@ -44,6 +48,12 @@ const HomePage: React.FC = () => {
             <li>🔄 Nu is het zijn beurt</li>
             <li>⏰ Herhaal & hydrateer door de tijd</li>
           </ul>
+
+          <p><i>
+            Tussen alle gewone exemplaren liggen ook een paar gouden examplaren<br/>
+            Vindt jij er eentje? <br/>
+            Dan mag jij je cadeautje ophalen bij onze tent 🎁
+            </i></p>
         </div>
       </div>
 
