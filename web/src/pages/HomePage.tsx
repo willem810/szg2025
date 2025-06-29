@@ -43,7 +43,7 @@ const HomePage: React.FC = () => {
           <ul style={{ listStyle: 'none', padding: 0 }}>
             <li>🥚 Vind een ei</li>
             <li>🔓 Open het ei → mini-badeendje</li>
-            <li>🎯 Gooi 't eendje in iemands glas</li>
+            <li>🎯 Gooi 't <b>ei 🥚</b> in iemands glas</li>
             <li>🍺 Die moet atten (VIP-regel #1)</li>
             <li>🔄 Nu is het zijn beurt</li>
             <li>⏰ Herhaal & hydrateer door de tijd</li>
@@ -51,7 +51,7 @@ const HomePage: React.FC = () => {
 
           <p><i>
             Tussen alle gewone exemplaren liggen ook een paar gouden examplaren<br/>
-            Vindt jij er eentje? <br/>
+            Vindt jij er eendje? <br/>
             Dan mag jij je cadeautje ophalen bij onze tent 🎁
             </i></p>
         </div>
