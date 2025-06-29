@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import ImageGallery from './ImageGallery';
 import ImageModal from './ImageModal';
+import { logImageClick, logVideoPlay } from '../services/analytics';
 
 interface TimelineItem {
   year: number;
@@ -57,6 +58,10 @@ const Timeline: React.FC = () => {
       const yearMedia = allMedia.filter(m => m.year === media.year);
       const indexInYear = yearMedia.findIndex(m => m.url === imageUrl);
       setSelectedMediaIndex(indexInYear >= 0 ? indexInYear : null);
+      
+      // Track image click
+      const imageName = media.path.split('/').pop()?.split('.')[0] || 'unknown';
+      logImageClick(imageName, media.year.toString());
     }
   };
 
@@ -67,6 +72,10 @@ const Timeline: React.FC = () => {
       const yearMedia = allMedia.filter(m => m.year === media.year);
       const indexInYear = yearMedia.findIndex(m => m.url === videoUrl);
       setSelectedMediaIndex(indexInYear >= 0 ? indexInYear : null);
+      
+      // Track video play
+      const videoName = media.path.split('/').pop()?.split('.')[0] || 'unknown';
+      logVideoPlay(videoName, media.year.toString());
     }
   };
 

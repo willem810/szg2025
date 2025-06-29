@@ -2,10 +2,16 @@ import HomePage from './pages/HomePage'
 import BackgroundDucks from './components/BackgroundDucks'
 import { StyleProvider, useStyle } from './contexts/StyleContext'
 import { useEffect } from 'react'
+import { initGA } from './services/analytics'
 import './App.css'
 
 const AppContent: React.FC = () => {
   const { isVintageStyle } = useStyle();
+  
+  useEffect(() => {
+    // Initialize Google Analytics
+    initGA();
+  }, []);
   
   useEffect(() => {
     if (isVintageStyle) {

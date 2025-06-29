@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import duckImg from '../assets/images/duck_background.png';
 import eggImg from '../assets/images/egg.png';
 import { useStyle } from '../contexts/StyleContext';
+import { logEasterEggFound } from '../services/analytics';
 
 const TimeMachineEasterEgg: React.FC = () => {
   const [active, setActive] = useState(false);
@@ -11,6 +12,9 @@ const TimeMachineEasterEgg: React.FC = () => {
   const { isVintageStyle, setVintageStyle } = useStyle();
 
   const handleClick = () => {
+    // Track easter egg activation
+    logEasterEggFound('time_machine');
+    
     setActive(true);
     setShowEgg(false);
     setShowFlash(false);
